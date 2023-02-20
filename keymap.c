@@ -28,7 +28,7 @@ enum layers {
     _ADJUST
 };
 
-enum custom_keycodes { QMKBEST = SAFE_RANGE, QMKPPM };
+enum custom_keycodes { QMKBEST = SAFE_RANGE, QMKPPM, QMKALT };
 
 // Aliases for readability
 #define QWERTY DF(_QWERTY)
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-      _______, KC_WH_U, _______, KC_MS_U, _______, KC_WH_L,                                    _______, _______, _______, _______,  QMKBEST, QMKPPM,
+      _______, KC_WH_U, _______, KC_MS_U, _______, KC_WH_L,                                    _______, _______, _______, QMKALT,  QMKBEST, QMKPPM,
       _______, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R,                                    RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI,  RGB_MOD, _______,
       _______, _______, _______, _______, _______, _______, QWERTY, DVORAK, _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD, _______,
                                  _______, _______, KC_BTN1,KC_BTN2, _______, _______, _______, _______, _______, _______
@@ -800,7 +800,7 @@ bool oled_task_user(void) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (is_keyboard_master()) {
+    // if (is_keyboard_master()) {
     //     oled_set_cursor(0, 0);
     //     oled_write_raw_byte(keycode, sizeof(keycode));
     // }
@@ -817,8 +817,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // print("sent debug\n");
             }
             break;
+        case QMKALT:
+            if (record->event.pressed) {
+                SEND_STRING(ALT_PASSWORD);
+                // print("sent debug\n");
+            }
+            break;
     }
-    return true;'s'
+    return true;
 };
 
 void keyboard_post_init_user(void) {
