@@ -1,0 +1,14 @@
+[Unit]
+Description=QMK System Stats - Send system stats to keyboard via Raw HID
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node /home/ross/Documents/developer/QMK_keymap/host-stats/index.js
+WorkingDirectory=/home/ross/Documents/developer/QMK_keymap/host-stats
+Restart=on-failure
+RestartSec=5
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=default.target

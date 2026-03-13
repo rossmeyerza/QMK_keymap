@@ -1,0 +1,9 @@
+# Udev rule for QMK Raw HID access without root
+# Install: sudo cp 99-qmk-raw-hid.rules /etc/udev/rules.d/
+# Reload: sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# Replace the idVendor and idProduct with your keyboard's actual VID/PID.
+# Find them with: lsusb | grep -i split
+# Or run: npm run find-devices
+
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="8d1d", ATTRS{idProduct}=="9d9d", MODE="0666"

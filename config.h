@@ -24,8 +24,7 @@
 #    define RGBLIGHT_LIMIT_VAL 150
 #endif
 
-// Lets you roll mod-tap keys
-#define IGNORE_MOD_TAP_INTERRUPT
+// IGNORE_MOD_TAP_INTERRUPT removed - now default behavior in QMK
 #define NO_ACTION_MACRO
 #define NO_ACTION_FUNCTION
 #define NO_ACTION_ONESHOT
@@ -43,3 +42,7 @@
 #define DISABLE_LEADER
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+// Raw HID usage page and ID (QMK defaults, explicit for host-side discovery)
+#define RAW_USAGE_PAGE 0xFF60
+#define RAW_USAGE_ID   0x61

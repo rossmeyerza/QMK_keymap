@@ -1,0 +1,14 @@
+{
+  "name": "qmk-system-stats",
+  "version": "1.0.0",
+  "description": "Send system stats to QMK keyboard via Raw HID",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "find-devices": "node -e \"require('node-hid').devices().filter(d => d.usagePage === 0xFF60).forEach(d => console.log(d))\""
+  },
+  "dependencies": {
+    "node-hid": "^3.1.0",
+    "systeminformation": "^5.22.0"
+  }
+}
