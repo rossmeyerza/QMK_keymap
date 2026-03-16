@@ -486,6 +486,9 @@ void raw_hid_receive(uint8_t *data, uint8_t length) {
                 // data[4] reserved
                 sys_gpu_percent = data[5];
                 sys_gpu_temp    = data[6];
+#ifdef OLED_ENABLE
+                oled_on();  // wake OLED when receiving HID stats
+#endif
                 last_hid_update = timer_read32();
             }
             break;

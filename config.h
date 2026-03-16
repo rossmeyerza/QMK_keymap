@@ -43,6 +43,9 @@
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
+// OLED turns off after 5 minutes of no keypresses (in ms)
+#define OLED_TIMEOUT 300000
+
 // Raw HID usage page and ID (QMK defaults, explicit for host-side discovery)
 #define RAW_USAGE_PAGE 0xFF60
 #define RAW_USAGE_ID   0x61
